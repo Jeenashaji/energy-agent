@@ -1,0 +1,8 @@
+id,question,expected
+1,What is the average day-ahead price over the whole period?,
+2,What was the highest hourly price and when did it occur?,
+3,How many hours had negative prices?,
+4,Which hour of the day is cheapest on average?,
+5,Which month had the highest average price?,
+6,What was the price on 1 January 2015?,not in the data
+7,Why do negative prices happen?,solar

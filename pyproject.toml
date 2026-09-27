@@ -1,0 +1,30 @@
+[project]
+name = "energy-agent"
+version = "0.1.0"
+description = "Tool-calling LLM agent for German electricity-market data: SQL tools, RAG, memory, MCP, API + Docker"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "langchain>=1.0",                   # agent framework (runs on LangGraph)
+    "langchain-google-genai>=4.0",      # Gemini LLM + embeddings
+    "langchain-text-splitters>=1.0",    # splitting documents for RAG
+    "langgraph-checkpoint-sqlite>=3.0", # saving conversations to disk (memory)
+    "mcp>=1.0",                         # Model Context Protocol server
+    "langchain-mcp-adapters>=0.1",      # lets the agent use MCP tools
+    "duckdb>=1.0",                      # SQL on the data
+    "pandas>=2.0",
+    "python-dotenv>=1.0",               # reads the .env file
+    "fastapi>=0.110",                   # HTTP API
+    "uvicorn>=0.29",                    # runs the API
+]
+
+[project.scripts]
+energy-agent = "energy_agent.cli:main"
+energy-agent-mcp = "energy_agent.mcp_server:main"
+
+[dependency-groups]
+dev = ["pytest>=8", "httpx>=0.27", "jupyter>=1.0"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
